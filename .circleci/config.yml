@@ -75,7 +75,7 @@ workflows:
               only: /.*/
             branches:
               only:
-                - main
+                - hiep/update-exporter
       - push_docker:
           requires:
             - build_docker
@@ -84,4 +84,4 @@ workflows:
               only: /.*/
             branches:
               only:
-                - main
+                - hiep/update-exporter
