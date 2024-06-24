@@ -22,7 +22,7 @@ const {
     rpchost = '127.0.0.1',
     rpcport = '8332',
     rpcscheme = 'http',
-    walletMonitor = true
+    walletMonitor = 'false'
 } = process.env;
 
 const call = createCall({
@@ -33,11 +33,19 @@ const call = createCall({
     rpcscheme,
 });
 
+const parseBoolean = (value) => {
+    if (typeof value === 'string') {
+        value = value.trim().toLowerCase();
+        return value === 'true' || value === '1';
+    }
+    return !!value;
+};
+
 const metricsHandler = (req, res) => {
     res.set('Content-Type', register.contentType);
 
     const promises = []
-    if (walletMonitor) {
+    if (parseBoolean(walletMonitor)) {
         const listUnspentPromise = call('listunspent')
             .then(transactions => transactions.reduce((balances, transaction) => {
                 balances[transaction.address] = (balances[transaction.address] || 0) + transaction.amount;
