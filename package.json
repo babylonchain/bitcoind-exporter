@@ -4,16 +4,16 @@
   "description": "Bitcoind metrics prometheus exporter",
   "main": "index.js",
   "scripts": {
-    "test": "dgoss run lepetitbloc/bitcoind-exporter",
+    "test": "dgoss run babylonchain/bitcoind-exporter",
     "start": "node -r dotenv/config index.js",
-    "build": "docker build -t lepetitbloc/bitcoind-exporter .",
-    "push": "docker push lepetitbloc/bitcoind-exporter",
+    "build": "docker build -t babylonchain/bitcoind-exporter .",
+    "push": "docker push babylonchain/bitcoind-exporter",
     "publish": "npm run build && npm run test && npm run push",
     "demo": "docker-compose up"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lepetitbloc/bitcoind-exporter.git"
+    "url": "git+https://github.com/babylonchain/bitcoind-exporter.git"
   },
   "keywords": [
     "bitcoin",
